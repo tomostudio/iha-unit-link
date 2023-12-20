@@ -21,6 +21,11 @@
         font-family: 'Inter';
       }
 
+      .closeContainer {
+        animation: slideOut 1s;
+        transform: translateY(100%);
+      }
+
       main {
         position: fixed;
         bottom: 0;
@@ -30,6 +35,25 @@
         align-items: center;
         background-color: #a1e3d4;
         padding: 15px 25px;
+        animation: slideIn 1s;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(100%);
+        }
+        to {
+          transform: translateY(0%);
+        }
+      }
+
+      @keyframes slideOut {
+        from {
+          transform: translateY(0%);
+        }
+        to {
+          transform: translateY(100%);
+        }
       }
 
       main > div:first-child {
@@ -141,7 +165,11 @@
     const removeContainer = (button) => {
       const mainContainer = document.querySelector('main')
 
-      mainContainer.remove()
+      mainContainer.classList.add('closeContainer')
+
+      setTimeout(() => {
+        mainContainer.remove()
+      }, 1000)
     }
   </script>
 </html>
