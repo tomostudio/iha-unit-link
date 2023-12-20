@@ -4,28 +4,144 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iha Unit Link</title>
-    <link rel="stylesheet" href="/styles/main.css" />
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        src: url('./Inter-Regular.woff2') format('woff2'),
+          url('./Inter-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Inter';
+      }
+
+      main {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: #a1e3d4;
+        padding: 15px 25px;
+      }
+
+      main > div:first-child {
+        flex-grow: 1;
+        position: relative;
+        height: 70px;
+      }
+
+      main > div:first-child > img {
+        width: auto;
+        height: 100%;
+        aspect-ratio: 45/13;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      main > p {
+        max-width: 400px;
+        font-size: 14px;
+        color: #576961;
+        font-weight: 600;
+        line-height: 120%;
+        text-align: right;
+        margin-right: 50px;
+      }
+
+      #close {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: none;
+        pointer-events: auto;
+      }
+
+      #close:hover > div {
+        background: white;
+      }
+
+      #close > div {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 50%;
+        top: 50%;
+        transform-origin: 50% 50%;
+        background: #576961;
+        transition: all 250ms;
+      }
+
+      #close > div:first-child {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      #close > div:last-child {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      @media screen and (max-width: 639px) {
+        main {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: start;
+          padding: 25px;
+          row-gap: 33px;
+        }
+
+        #close {
+          order: 2;
+          width: 17px;
+          height: 17px;
+        }
+
+        main > div:first-child {
+          height: 52px;
+        }
+
+        main > p {
+          order: 3;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 18px;
+          max-width: none;
+          text-align: start;
+          margin-right: 0;
+        }
+      }
+    </style>
   </head>
   <body>
     <main>
       <div>
-        <img src="/assets/image/logo.png" alt="Indonesian Heritage Agency" />
-        <button id="close_mobile" class="close mobile">
-          <div></div>
-          <div></div>
-        </button>
+        <img src="/logo.png" alt="Indonesian Heritage Agency" />
       </div>
-      <div>
-        <p>
-          Far far away, behind the word mountains, far from the countries
-          Vokalia and Consonantia.
-        </p>
-        <button id="close_desktop" class="close desktop">
-          <div></div>
-          <div></div>
-        </button>
-      </div>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia
+        and Consonantia.
+      </p>
+      <button id="close" onclick="removeContainer()">
+        <div></div>
+        <div></div>
+      </button>
     </main>
   </body>
-  <script src="/js/main.js"></script>
+  <script>
+    const removeContainer = (button) => {
+      const mainContainer = document.querySelector('main')
+
+      mainContainer.remove()
+    }
+  </script>
 </html>
