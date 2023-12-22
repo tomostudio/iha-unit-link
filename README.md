@@ -1,6 +1,5 @@
 # IHA Unit Pop Up Banner
 
----
 
 This Pop Up Banner is created by TOMO Studio for Indonesian Heritage Agency.
 
